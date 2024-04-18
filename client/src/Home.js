@@ -6,7 +6,7 @@ import foodImage1 from "./images/IMG_0547-1024x682-1.jpg";
 import foodImage2 from "./images/image2.jpg";
 import foodImage3 from "./images/AdobeStock_319447161_Preview.jpeg";
 import foodImage4 from "./images/AdobeStock_533000353_Preview.jpeg";
-import foodImage5 from "./images/AdobeStock_615243490_Preview.jpeg";
+import foodImage5 from "./images/360_F_761616792_UoC8gpE0Eh7i4DYgylN5nHUKKD6tg7jw.jpg";
 
 function Home() {
     const images = [foodImage1, foodImage2, foodImage3, foodImage4, foodImage5];
