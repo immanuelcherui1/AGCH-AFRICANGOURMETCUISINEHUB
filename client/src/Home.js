@@ -64,7 +64,7 @@ function Home() {
             style={{ padding: '5px', marginRight: '5px' }}
           />
           <button type="submit" style={{ padding: '5px 10px', marginRight: '5px', background: '#ff0000', color: 'white' }}>Search</button>
-          <button type="button" style={{ padding: '5px 10px', background: '#00ff00', color: 'white'}}>Guest</button>
+          <button type="button" style={{ padding: '5px 10px', background: 'black', color: 'white'}}>Guest</button>
         </form>
   
         <nav style={{
@@ -81,10 +81,10 @@ function Home() {
             display: 'flex',
             fontSize: '1.3rem'
           }}>
-            <li style={{ margin: '0 20px', fontSize: '1.3rem' }}><a href="#" style={{ color: 'white', fontSize: '1.3rem' }}>Home</a></li>
-            <li style={{ margin: '0 20px', fontSize: '1.3rem' }}><a href="#" style={{ color: 'white', fontSize: '1.3rem' }}>Dashboard</a></li>
-            <li style={{ margin: '0 20px', fontSize: '1.3rem' }}><a href="#" style={{ color: 'white', fontSize: '1.3rem' }}>Profile</a></li>
-            <li style={{ margin: '0 20px', fontSize: '1.3rem' }}><a href="#" style={{ color: 'white', fontSize: '1.3rem' }}>About</a></li>
+            <li style={{ margin: '0 20px', fontSize: '1.3rem' }}><a href="#" style={{ color: 'white' }}>Home</a></li>
+            <li style={{ margin: '0 20px', fontSize: '1.3rem' }}><a href="#" style={{ color: 'white' }}>Dashboard</a></li>
+            <li style={{ margin: '0 20px', fontSize: '1.3rem' }}><a href="#" style={{ color: 'white' }}>Profile</a></li>
+            <li style={{ margin: '0 20px', fontSize: '1.3rem' }}><a href="#" style={{ color: 'white' }}>About</a></li>
           </ul>
         </nav>
       </div>
