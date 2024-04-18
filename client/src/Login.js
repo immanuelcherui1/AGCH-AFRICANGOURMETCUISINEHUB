@@ -1,6 +1,5 @@
-// Login.jsx
 import React, { useState } from 'react';
-import './Login.css';
+import './Login.css';  // Make sure the CSS styles are appropriate for login similar to signup
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -23,7 +22,8 @@ function Login() {
                     <label>Password</label>
                     <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                 </div>
-                <button type="submit" styles="background-color=green">Login</button>
+                {/* Inline styles should be an object in JSX, corrected syntax for inline style below */}
+                <button type="submit" style={{ backgroundColor: 'green' }}>Login</button>
             </form>
         </div>
     );

@@ -1,11 +1,10 @@
-// Signup.jsx
 import React, { useState } from 'react';
 import './Signup.css';
 
 function Signup() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [userName, setuserName] = useState('');
+    const [userName, setUserName] = useState(''); // Conventionally, use camelCase for function names
 
     const handleSignup = (event) => {
         event.preventDefault();
@@ -18,7 +17,7 @@ function Signup() {
                 <h2>Sign Up</h2>
                 <div className="input-group">
                     <label>Username</label>
-                    <input type="text" value={userName} onChange={(e) => setName(e.target.value)} required />
+                    <input type="text" value={userName} onChange={(e) => setUserName(e.target.value)} required />
                 </div>
                 <div className="input-group">
                     <label>Email</label>
