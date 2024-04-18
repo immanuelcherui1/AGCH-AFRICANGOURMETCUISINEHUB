@@ -1,13 +1,3 @@
-/* recipeForm.css */
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Use the full height of the viewport */
-    margin: 0; /* Remove default margin */
-    background-color: #f0f0f0; /* Optional: Adds a background color to the body */
-}
-
 form {
     display: flex;
     flex-direction: column;
