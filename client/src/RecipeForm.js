@@ -8,9 +8,10 @@ function RecipeForm() {
         instructions: '',
         category: '',
         country: '',
-        image: null
+        image_url: null
     });
     const [isLoading, setIsLoading] = useState(false);
+    const [isSubmitted, setIsSubmitted] = useState(false); // Track form submission
 
     const handleChange = (e) => {
         const { name, type, files, value } = e.target;
@@ -31,6 +32,7 @@ function RecipeForm() {
         try {
             const response = await axios.post('http://localhost:5000/api/recipes', data);
             console.log('Response:', response.data);
+            setIsSubmitted(true); // Set form submission state to true
             alert('Recipe submitted successfully!');
         } catch (error) {
             console.error('Error posting recipe:', error);
@@ -39,6 +41,11 @@ function RecipeForm() {
             setIsLoading(false);
         }
     };
+
+    // Display a success message if form is submitted successfully
+    if (isSubmitted) {
+        return <p>Recipe submitted successfully!</p>;
+    }
 
     return (
         <form onSubmit={handleSubmit}>
@@ -55,7 +62,7 @@ function RecipeForm() {
                 <input id="country" type="text" name="country" value={formData.country} onChange={handleChange} required />
             </label>
             <label htmlFor="image">Image:
-                <input id="image" type="file" name="image" onChange={handleChange} />
+                <input id="image" type="text" name="image" onChange={handleChange} />
             </label>
             <button type="submit" disabled={isLoading}>{isLoading ? 'Submitting...' : 'Submit Recipe'}</button>
         </form>

@@ -1,14 +1,22 @@
+// Signup.js
 import React, { useState } from 'react';
 import './Signup.css';
 
 function Signup() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [userName, setUserName] = useState(''); // I've also adjusted the naming to follow camelCase convention
+    const [userName, setUserName] = useState('');
 
     const handleSignup = (event) => {
         event.preventDefault();
         console.log('Signup with:', userName, email, password);
+
+        // Clear authentication tokens or user information from local storage
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+
+        // Redirect to the home page
+        window.location.href = '/'; // Redirect to the home page
     };
 
     return (

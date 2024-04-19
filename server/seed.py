@@ -21,13 +21,13 @@ with app.app_context():
             password="password456"
         )
 
-        #sample recipes with image paths
+        #sample recipes with image_url paths
         recipe1 = Recipe(
             title="Pasta Carbonara",
             instructions="Lorem ipsum dolor sit amet.",
             category="Nyarwanda",
             country="Rwanda",
-            image="images/pasta_carbonara.jpg",
+            image_url="images/pasta_carbonara.jpg",
             author=user1
         )
         recipe2 = Recipe(
@@ -35,7 +35,7 @@ with app.app_context():
             instructions="Consectetur adipiscing elit.",
             category="Kalenjin",
             country="Kenyan",
-            image="images/chicken_curry.jpg",
+            image_url="images/chicken_curry.jpg",
             author=user2
         )
 

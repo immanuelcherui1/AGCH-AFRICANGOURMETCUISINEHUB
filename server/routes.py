@@ -33,3 +33,19 @@ def signup():
 def logout():
     logout_user()
     return jsonify({'message': 'Logged out successfully'}), 200
+
+@app.route('/recipeform', methods=['POST'])
+def recipeform():
+    recipe = Recipe(
+        title=request.form['title'],
+        instructions=request.form['instructions'],
+        category=request.form['category'],
+        country=request.form['country'],
+        image_url=request.form['image_url'],
+        author=current_user,
+        # Assuming password is not related to the recipe data
+    )
+    db.session.add(recipe)
+    db.session.commit()
+    return jsonify({'message': 'Recipe submitted successfully'}), 201
+
