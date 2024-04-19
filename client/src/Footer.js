@@ -4,7 +4,7 @@ import { faInstagram, faFacebook, faTwitter } from '@fortawesome/free-brands-svg
 
 function Footer() {
     return (
-        <footer style={{ backgroundColor: '#ff0000', color: 'white', textAlign: 'center', padding: '10px', position: 'fixed', bottom: 0, width: '100%' }}>
+        <footer style={{ backgroundColor: '#ff0000', color: 'white', textAlign: 'center', padding: '10px', width: '100%' }}>
             <p> African Gourmet Cuisine Hub </p>
             <p>© 2024 </p>
             <div>
