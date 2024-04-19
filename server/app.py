@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from flask import Flask, request, make_response, jsonify
+from flask import Flask, request, make_response, jsonify, session
 from flask_marshmallow import Marshmallow
 from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
 from marshmallow import ValidationError, fields
@@ -11,6 +11,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from werkzeug.utils import secure_filename
 import os
 from flask_cors import CORS
+from flask_session import Session
 
 from models import db, UserProfile, Recipe, Review
 
@@ -20,7 +21,11 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # app.json.compact = False
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
-app.config['UPLOAD_FOLDER'] = 'UPLOAD_FOLDER'
+app.config['SESSION_TYPE'] = 'sqlalchemy'
+app.config['SESSION_COOKIE_SECURE'] = True
+app.config['SESSION_COOKIE_HTTPONLY'] = True
+
+Session(app)
 
 CORS(app)
 
@@ -29,10 +34,7 @@ db.init_app(app)
 
 ma = Marshmallow(app)
 
-# Utility function to check file extension
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in {'png', 'jpg', 'jpeg', 'gif'}
+
 
 
 # Marshmallow Schemas
@@ -110,35 +112,26 @@ class RecipeList(Resource):
         recipes = Recipe.query.all()
         # response = make_response(recipes_schema.dump(recipes)), 200
         return jsonify(recipes_schema.dump(recipes))
-
-
+    
     def post(self):
-        # Check for JSON data
+        if 'user_id' not in session:
+            return jsonify({'message': 'Please log in or sign up to comment.'}), 401
+
         json_data = request.get_json()
         if not json_data:
-            print("Group")
             return jsonify({'message': 'No input data provided'})
-        
-        # Validate and deserialize input
+
+        # Check if an image URL is provided in the JSON data
+        if 'image_url' not in json_data or not json_data['image_url']:
+            return jsonify({'message': 'Image URL must be provided'}), 400
+
+        # Validate and deserialize input, assume 'image_url' is part of your schema
         try:
             data = recipe_schema.load(json_data)
         except ValidationError as err:
             return jsonify(err.messages), 422
-        
-        # Handle file upload
-        if 'image' in request.files:
-            image = request.files['image']
-            if image.filename == '':
-                return jsonify({'message': 'No selected file'}), 400
-            if image and allowed_file(image.filename):
-                filename = secure_filename(image.filename)
-                image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-                image.save(image_path)
-                data['image'] = image_path  # Update the data dictionary with the image path
-            else:
-                return jsonify({'message': 'Invalid file type'}), 400
 
-        # Create new Recipe instance
+        # Create new Recipe instance with the image URL directly
         recipe = Recipe(**data)
         db.session.add(recipe)
         db.session.commit()
@@ -146,6 +139,7 @@ class RecipeList(Resource):
         return recipe_schema.jsonify(recipe), 201
 
 api.add_resource(RecipeList, '/recipes')
+
 
 
 class RecipeDetail(Resource):
@@ -187,17 +181,18 @@ class RecipeSearch(Resource):
 api.add_resource(RecipeSearch, '/recipes/search')
 
 #  For Login
-class UserPassword(Resource):
+class UserLogin(Resource):
     def post(self):
         data = request.get_json()
         user = UserProfile.query.filter_by(email=data['email']).first()
         if user and check_password_hash(user.password_hash, data['password']):
+            session['user_id'] = user.id
             return {'message': 'Password matches'}, 200
         else:
             return {'message': 'Invalid password'}, 401
 
 
-api.add_resource(UserPassword, '/login')
+api.add_resource(UserLogin, '/login')
 
 class UserSignup(Resource):
     def post(self):
@@ -228,6 +223,8 @@ class UserSignup(Resource):
         # Add the user profile to the database
         db.session.add(new_user)
         db.session.commit()
+
+        session['user_id'] = new_user.id
         
         return jsonify({'message': 'User registered successfully'})
 
