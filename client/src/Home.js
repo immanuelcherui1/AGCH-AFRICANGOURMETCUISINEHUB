@@ -1,60 +1,58 @@
-import React, { useState } from 'react';
+import React from "react";
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
-import imag1 from "./images/AdobeStock_319447161_Preview.jpeg";
-import img2 from "./images/AdobeStock_533000353_Preview.jpeg";
-import img3 from "./images/AdobeStock_615243490_Preview.jpeg";
-import img4 from "./images/AdobeStock_697786172_Preview.jpeg";
-import "./Home.css";
-// import About from './About';
 
-const Home = () => {
-    const [searchTerm, setSearchTerm] = useState('');
+import foodImage1 from "./images/IMG_0547-1024x682-1.jpg";
+import foodImage2 from "./images/image2.jpg";
+import foodImage3 from "./images/AdobeStock_495509521_Preview.jpeg";
+import foodImage4 from "./images/AdobeStock_132231609_Preview.jpeg";
+import foodImage5 from "./images/AdobeStock_697786172_Preview.jpeg";
+import foodImage6 from "./images/AdobeStock_460568325_Preview.jpeg";
+import foodImage7 from "./images/AdobeStock_739953694_Preview.jpeg";
+import foodImage8 from "./images/images.jpeg";
 
-    const handleSearch = (event) => {
-        event.preventDefault();
-        console.log('Searching for:', searchTerm);
-    };
 
-    const images = [imag1, img2, img3, img4];
+function Home() {
+  const images = [foodImage1, foodImage2, foodImage3, foodImage4, foodImage5, foodImage6, foodImage7, foodImage8];
 
-    return (
-        <div className="home-container">
-            <Slide>
-                {images.map((img, ind) => (
-                    <div key={ind} className="each-slide-effect">
-                        <div style={{ 'backgroundImage': `url(${img})` }}>
-                        </div>
-                    </div>
-                ))}
-            </Slide>
+  return (
+    <div style={{ position: 'relative', width: '100%', height: '600px' }}>
+      {/* Slideshow container */}
+      <Slide easing="ease" duration={2000} transitionDuration={500} infinite={true} indicators={true} arrows={false} autoplay={true}>
+        {images.map((each, index) => (
+          <div key={index} className="each-slide" style={{ 'backgroundImage': `url(${each})`, width: '100%', height: '600px', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+            {/* Optional overlay or content could go here */}
+          </div>
+        ))}
+      </Slide>
 
-            <div className="overlay-content">
-                <h1>Welcome to Africa Gourmet Cuisine Hub</h1>
-                <h3>We have the best recipes for making your favorite food.</h3>
-            </div>
+      {/* Welcome Text Overlay */}
+      <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', color: 'white', textAlign: 'center', zIndex: 20, fontSize: '1.3rem', // Set background color to black
+    padding: '20px', // Add some padding around the text
+    borderRadius: '15px', // Rounded corners
+    }}>
+        <h1>Welcome to Africa Gourmet Cuisine Hub</h1>
+        <h3>We have the best recipes for making your favorite food.</h3>
+      </div>
 
-            <nav className="nav-bar">
-                <ul className="nav-list">
-                    <li className="nav-item"><a href="/">Home</a></li>
-                    <li className="nav-item"><a href="/Signup" className="nav-link">Dashboard</a></li>
-                    <li className="nav-item"><a href="/About" className="nav-link">About</a></li>
-                    <li className="nav-item"><a href="/RecipeForm">Guest</a></li>
-                    <li className="nav-item">
-                        <form onSubmit={handleSearch}>
-                            <input
-                                type="text"
-                                placeholder="Search..."
-                                value={searchTerm}
-                                onChange={(e) => setSearchTerm(e.target.value)}
-                            />
-                            <button type="submit">Search</button>
-                        </form>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    );
-};
+      {/* Navigation bar positioned on top of the slideshow */}
+      {/* <nav className="nav-bar"> */}
+   
+
+
+<nav style={{ position: 'absolute', top: '20px', right: '20px', display: 'inline-block' }}>
+    <ul style={{ listStyleType: 'none', margin: 0, padding: 0, display: 'flex', fontSize: '1.2rem', zIndex: 10 }}>
+        <li style={{ margin: '0 20px' }}><a href="/" style={{ color: 'white' }}>Home</a></li>
+        <li style={{ margin: '0 20px' }}><a href="/Signup" style={{ color: 'white' }}>Dashboard</a></li>
+        <li style={{ margin: '0 20px' }}><a href="/About" style={{ color: 'white' }}>About</a></li>
+        <li style={{ margin: '0 30px', backgroundColor: 'red', boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.5)' }}>
+            <a href="/RecipeForm" style={{ color: 'white', padding: '20px 25px' }}>Guest</a>
+        </li>
+    </ul>
+</nav>
+
+    </div>
+  );
+}
 
 export default Home;
