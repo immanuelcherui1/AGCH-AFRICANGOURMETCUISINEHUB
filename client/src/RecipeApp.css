@@ -77,7 +77,7 @@ select {
 }
 
 .read-more:hover {
-    color: red; /* Changed hover color to red */
+    color: rgb(200, 196, 196); /* Changed hover color to red */
 }
 
 .no-recipes {

@@ -1,12 +1,14 @@
 form {
-    display: flex;
+    display: grid;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 10px;
-    width: 300px;
+    /* width: 300px; */
     padding: 20px;
     border: 1px solid #282727;
     border-radius: 8px;
-    background-color: #ef2d1b;
+    background-color: #f0eded;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: Adds subtle shadow to the form */
 }
 
@@ -21,7 +23,7 @@ input[type="file"] {
 
 button {
     padding: 10px;
-    background-color: #4CAF50;
+    background-color: #d31616;
     color: white;
     border: none;
     border-radius: 4px;
@@ -29,7 +31,7 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #040404;
 }
 
 label {

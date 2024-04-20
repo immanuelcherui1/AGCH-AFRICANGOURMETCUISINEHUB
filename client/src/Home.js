@@ -6,7 +6,7 @@ import foodImage2 from "./images/image2.jpg";
 import foodImage3 from "./images/AdobeStock_495509521_Preview.jpeg";
 import foodImage4 from "./images/AdobeStock_132231609_Preview.jpeg";
 import foodImage5 from "./images/AdobeStock_697786172_Preview.jpeg";
-import foodImage6 from "./images/AdobeStock_460568325_Preview.jpeg";
+import foodImage6 from "./images/AdobeStock_460571394_Preview.jpeg";
 import foodImage7 from "./images/AdobeStock_739953694_Preview.jpeg";
 import foodImage8 from "./images/images.jpeg";
 import Footer from "./Footer";
