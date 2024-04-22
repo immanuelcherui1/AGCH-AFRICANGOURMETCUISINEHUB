@@ -1,7 +1,6 @@
 import React from 'react';
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
-import Footer from './Footer';
 import RecipesDisplay from './RecipeDisplay';
 import foodImage1 from "./images/IMG_0547-1024x682-1.jpg";
 import foodImage2 from "./images/image2.jpg";
@@ -12,6 +11,7 @@ import foodImage6 from "./images/AdobeStock_460568325_Preview.jpeg";
 import foodImage7 from "./images/AdobeStock_739953694_Preview.jpeg";
 import foodImage8 from "./images/images.jpeg";
 
+
 function Home() {
     const images = [
         foodImage1, foodImage2, foodImage3, foodImage4,
@@ -19,6 +19,7 @@ function Home() {
     ];
 
     return (
+
         <div style={{ position: 'relative', width: '100%', height: '600px' }}>
             <Slide easing="ease" duration={2000} transitionDuration={500} infinite={true} indicators={true} arrows={false} autoplay={true}>
                 {images.map((each, index) => (
@@ -33,7 +34,7 @@ function Home() {
                 <h3>We have the best recipes for making your favorite food.</h3>
             </div>
             <RecipesDisplay/>
-            <Footer />
+           
         </div>
     );
 }

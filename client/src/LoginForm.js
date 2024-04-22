@@ -1,24 +1,35 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 function LoginForm() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [loggedInUser, setLoggedInUser] = useState(null); // New state variable to store the logged-in user's name
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
             const response = await axios.post('/user/login', { email, password });
             console.log('Login Success:', response.data);
-            // Redirect or handle login success
+            setLoggedInUser(response.data.name); // Store the logged-in user's name
         } catch (err) {
             setError('Invalid email or password');
             console.error('Login Error:', err);
         }
     };
 
+    // Render welcome message if a user is logged in
+    if (loggedInUser) {
+        return (
+            <div style={{ textAlign: 'center' }}>
+                <h2>Welcome {loggedInUser}</h2>
+                {/* Add any other content or navigation for the logged-in user */}
+            </div>
+        );
+    }
+
+    // Render login form otherwise
     return (
         <div className="login-form" 
         style={{
@@ -43,7 +54,7 @@ function LoginForm() {
                 <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Email" required />
                 <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" required />
                 <button type="submit">Log In</button>
-                <p>Don't have an account? <Link to="/signup">Sign up</Link></p>
+                <p>Don't have an account? Kindly Sign up</p>
             </form>
         </div>
     );

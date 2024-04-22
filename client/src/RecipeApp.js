@@ -50,7 +50,7 @@ function RecipeApp() {
 
   return (
     <div className="container">
-      <h1>Recipe Finder</h1>
+      <h1>External Recipes</h1>
       <select onChange={handleCategoryChange} value={selectedCategory}>
         <option value="">All Recipes</option>
         {categories.map((category, index) => (
