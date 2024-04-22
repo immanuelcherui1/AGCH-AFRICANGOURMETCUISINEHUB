@@ -78,8 +78,4 @@ class Review(db.Model):
     # Add the CheckConstraint to the table arguments
     __table_args__ = (
         CheckConstraint('1 <= rating AND rating <= 5', name='rating_range'),
-<<<<<<< HEAD
     )
-=======
-    )
->>>>>>> 60cd814f60e3821763366aa212205b6d67095708

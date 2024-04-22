@@ -10,36 +10,6 @@ with app.app_context():
 
     def seed_data():
         #sample user profiles
-<<<<<<< HEAD
-        user1 = UserProfile(
-            name="John Doe",
-            email="john@gmail.com",
-            password="password123"
-        )
-        user2 = UserProfile(
-            name="Jane Doe",
-            email="jane@gmail.com",
-            password="password456"
-        )
-
-        #sample recipes with image paths
-        recipe1 = Recipe(
-            title="Pasta Carbonara",
-            instructions="Lorem ipsum dolor sit amet.",
-            category="Nyarwanda",
-            country="Rwanda",
-            image="images/pasta_carbonara.jpg",
-            author=user1
-        )
-        recipe2 = Recipe(
-            title="Mursik",
-            instructions="Consectetur adipiscing elit.",
-            category="Kalenjin",
-            country="Kenyan",
-            image="images/chicken_curry.jpg",
-            author=user2
-        )
-=======
         user1 = UserProfile(name="Immanuel Cheruiyot",email="immanuel@gmail.com",password="password123")
         user2 = UserProfile(name="Sarah Wanjiku",email="sarah@gmail.com",password="password234")
         user3 = UserProfile(name="Debra Cherono",email="debra@gmail.com",password="password345")
@@ -108,7 +78,6 @@ with app.app_context():
             country="East Africa",image="v",author=user4)
         
 
->>>>>>> 60cd814f60e3821763366aa212205b6d67095708
 
         # sample reviews
         review1 = Review(

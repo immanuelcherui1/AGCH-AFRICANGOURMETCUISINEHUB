@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# AfricanGourmetCuisineHub
-AGCH is a Flask-based web application showcasing African cuisines and promoting culinary diversity. It will enable users to post, discover, and engage with recipes from all over Africa and  food enthusiasts in a community centered on African culinary traditions
-=======
 
 # AfricanGourmetCuisineHub
 # Introduction
@@ -49,4 +45,3 @@ Feel free to let me know if you need further adjustments or have any other quest
 
 
 
->>>>>>> 60cd814f60e3821763366aa212205b6d67095708

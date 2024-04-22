@@ -14,19 +14,12 @@ werkzeug = "*"
 email-validator = "*"
 flask-cors = "*"
 marshmallow-sqlalchemy = "*"
-<<<<<<< HEAD
-=======
 flask-session = "*"
 flask-login = "*"
 flask-bcrypt = "*"
->>>>>>> 60cd814f60e3821763366aa212205b6d67095708
 
 [dev-packages]
 
 [requires]
 python_version = "3.8"
-<<<<<<< HEAD
-python_full_version = "3.8.13"
-=======
 python_full_version = "3.10.12"
->>>>>>> 60cd814f60e3821763366aa212205b6d67095708
